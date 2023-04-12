@@ -715,11 +715,35 @@
     \mathbf{G}=h\mathbf{b}_1+k\mathbf{b}_2+l\mathbf{b}_3
 \end{equation}
 \]</div>
+<!-- 
 <figure>
   <img src="../assets/program.png" width=400px;>
   <figcaption>Fig 3. Workflow of this program.</figcaption>
-</figure>
+</figure> -->
 
+<p>Workflow of this program:
+<pre class="mermaid"><code>stateDiagram-v2
+
+    CIF --&gt; POSCAR
+    POSCAR: POSCAR 
+    POSCAR: Lattice Constants
+    POSCAR: Atom position
+    POSCAR --&gt; Bragg
+
+    Input1 --&gt; Bragg
+    Input1: Input
+    Input1: (hkl) dimensions
+    Input1: Rotation
+    Bragg: Bragg peak
+    Bragg: Bragg peak postitions in reciprocal space (3D)
+
+    Bragg --&gt; Intensity
+    Input2 --&gt; Intensity
+    Input2: Input
+    Input2: Peak Broadening parameters 
+    Input2: 2D image grid
+    Intensity --&gt; 2d
+    2d: 2d image display</code></pre></p>
 <p><a href="https://github.com/ZihanZhang-1996/2D_diffraction">Download</a> the source code.</p>
 <div class="tabbed-set tabbed-alternate" data-tabs="2:5"><input checked="checked" id="__tabbed_2_1" name="__tabbed_2" type="radio" /><input id="__tabbed_2_2" name="__tabbed_2" type="radio" /><input id="__tabbed_2_3" name="__tabbed_2" type="radio" /><input id="__tabbed_2_4" name="__tabbed_2" type="radio" /><input id="__tabbed_2_5" name="__tabbed_2" type="radio" /><div class="tabbed-labels"><label for="__tabbed_2_1">Code</label><label for="__tabbed_2_2">Set the parameters</label><label for="__tabbed_2_3">Read CIF</label><label for="__tabbed_2_4">Simulation</label><label for="__tabbed_2_5">Plot</label></div>
 <div class="tabbed-content">
